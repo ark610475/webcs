@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <!-- 頁面標題 -->
+  <title>我的個人網站</title>
+
+  <!-- 設定網頁的編碼 -->
+  <meta charset="UTF-8" />
+
+  <!-- 引入 CSS -->
+  
+  <link rel="stylesheet" href="testcss.css" />
+</head>
+<body>
+
+  <!-- 網站頁首 -->
+  <header>
+    <h1>你好，我是 William</h1>
+    <p>全端開發學習中</p>
+  </header>
+
+  <!-- 導覽列 -->
+  <nav>
+    <!-- 超連結 -->
+    <a href="#about">關於我</a>
+    <a href="#skills">技能</a>
+    <a href="#contact">聯絡方式</a>
+  </nav>
+
+  <!-- 網站主要內容 -->
+  <main>
+
+    <!-- 區塊：關於我 -->
+    <section id="about">
+      <h2>關於我</h2>
+      <p>我熱愛寫程式，目前正學習 HTML、CSS、JavaScript 以及 React。</p>
+      <!-- 圖片 -->
+      <img src="https://via.placeholder.com/150" alt="大頭照">
+    </section>
+
+    <!-- 區塊：技能 -->
+    <section id="skills">
+      <h2>我的技能</h2>
+      <!-- 無序清單 -->
+      <ul>
+        <li>HTML / CSS</li>
+        <li>JavaScript</li>
+        <li>React.js</li>
+        <li>Git / GitHub</li>
+      </ul>
+    </section>
+
+    <!-- 區塊：聯絡方式 -->
+    <section id="contact">
+      <h2>聯絡我</h2>
+
+      <!-- 表單 -->
+      <form onsubmit="sendMessage(event)">
+        <!-- 標籤和輸入欄位 -->
+        <label for="name">姓名：</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="message">訊息：</label><br>
+        <!-- 多行輸入 -->
+        <textarea id="message" name="message" rows="4" cols="30"></textarea><br><br>
+
+        <!-- 按鈕 -->
+        <button type="submit">送出</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- 網站頁尾 -->
+  <footer>
+    <p>&copy; 2025 William 的網站</p>
+  </footer>
+
+  <!-- JavaScript 功能 -->
+  <script>
+    // 當表單送出時執行此函式
+    function sendMessage(event) {
+      event.preventDefault(); // 阻止網頁重新整理
+      const name = document.getElementById("name").value;
+      alert("感謝你的留言，" + name + "！");
+    }
+  </script>
+
+</body>
+</html>

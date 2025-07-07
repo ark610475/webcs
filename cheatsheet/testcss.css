@@ -1,0 +1,50 @@
+/* 整個網頁的基本字型、行距、背景與文字顏色 */
+body {
+  font-family: Arial, sans-serif; /* 設定字型為 Arial，若無則使用系統預設無襯線字型 */
+  line-height: 1.6;               /* 行高為字體大小的 1.6 倍，讓文字較易閱讀 */
+  margin: 0;                      /* 去除瀏覽器預設的外邊距 */
+  padding: 0;                     /* 去除瀏覽器預設的內邊距 */
+  background-color: #f9f9f9;     /* 網頁背景色為淡灰色 */
+  color: #333;                   /* 文字顏色為深灰色，較柔和不刺眼 */
+}
+
+/* header 標籤的樣式 */
+header {
+  background-color: #4CAF50;     /* 背景色設定為綠色 */
+  color: white;                  /* 文字顏色為白色 */
+  padding: 1rem;                 /* 內邊距上下左右各 1rem */
+  text-align: center;            /* 文字置中 */
+}
+
+/* 導覽列中所有連結（a 標籤）的樣式 */
+nav a {
+  color: white;                  /* 連結文字為白色 */
+  margin: 0 10px;                /* 左右外邊距各 10px，讓連結間有間隔 */
+  text-decoration: none;         /* 移除連結預設的底線 */
+}
+
+/* 導覽列連結滑鼠移上去時的樣式 */
+nav a:hover {
+  text-decoration: underline;   /* 滑鼠移上時出現底線 */
+}
+
+/* 通用容器類別，通常用來設定最大寬度和置中 */
+.container {
+  width: 80%;                   /* 寬度為視窗的 80% */
+  margin: 0 auto;               /* 左右自動外邊距，水平置中 */
+  padding: 2rem 0;              /* 上下內邊距各 2rem，左右無內邊距 */
+}
+
+/* 按鈕樣式 */
+button {
+  background-color: #4CAF50;    /* 綠色背景 */
+  color: white;                 /* 白色文字 */
+  border: none;                 /* 無邊框 */
+  padding: 0.5rem 1rem;         /* 上下內邊距 0.5rem，左右 1rem */
+  cursor: pointer;              /* 滑鼠移到按鈕上時顯示手指圖示 */
+}
+
+/* 按鈕滑鼠移上去時的樣式 */
+button:hover {
+  background-color: #45a049;    /* 背景色變深綠色，給予互動反饋 */
+}
