@@ -1,0 +1,184 @@
+<button id="myBtn">
+  <img src="圖片網址.jpg" alt="按鈕圖片" />
+</button>
+
+<script>
+  const btn = document.getElementById('myBtn');
+  btn.addEventListener('click', function() {
+    alert('你按了按鈕！');
+  });
+</script>
+
+
+變數宣告
+// ES5
+var x = 10;
+// ES6+
+let y = 20;       // 可變變數
+const z = 30;     // 常數，不可變
+
+
+資料型態
+let str = "Hello";           // 字串
+let num = 123;               // 數字
+let bool = true;             // 布林值
+let undef;                   // undefined
+let nul = null;              // null
+let obj = { name: "Tom" };   // 物件
+let arr = [1, 2, 3];         // 陣列
+let func = function() {};    // 函式
+
+
+函式
+// 傳統寫法
+function add(a, b) {
+  return a + b;
+}
+
+// 箭頭函式 (Arrow function)
+const multiply = (a, b) => a * b;
+
+
+特殊迴圈
+// for...of 遍歷陣列
+for (const item of arr) {
+  console.log(item);
+}
+
+// for...in 遍歷物件屬性
+for (const key in obj) {
+  console.log(key, obj[key]);
+}
+
+
+陣列操作
+let arr1 = [];
+let arr2 = new Array();
+arr.push(4);           // 尾巴加入元素
+arr.pop();             // 尾巴移除元素
+arr.shift();           // 頭部移除元素
+arr.unshift(0);        // 頭部加入元素
+arr.map(x => x * 2);   // 對每個元素做轉換，回傳新陣列
+arr.filter(x => x > 1);// 篩選符合條件元素
+arr.find(x => x === 2);// 找出符合條件第一個元素
+arr.includes(3);       // 是否包含指定元素
+
+
+物件
+let person = {
+  name: "Alice",
+  age: 25,
+  greet: function() {
+    console.log("Hello, " + this.name);
+  }
+};
+
+console.log(person.name);   // 讀取
+person.age = 26;            // 修改
+person.greet();             // 呼叫方法
+
+
+DOM操作
+// 取得元素  (html中 <id = 'xxx'>)
+const btn = document.getElementById("xxx");
+
+// 綁定事件
+btn.addEventListener("click", () => {
+  alert("按鈕被點擊了");
+});
+
+// 修改文字內容
+const div = document.querySelector(".content");
+div.textContent = "新內容";
+
+
+
+前後端
+
+ <script>
+    function getMessage() {
+      fetch('/api/message')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('getResult').textContent = data.message;
+        });
+    }
+
+    function sendMessage() {
+      const msg = document.getElementById('userInput').value;
+
+      fetch('/api/message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: msg })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('postResult').textContent = data.reply;
+      });
+    }
+  </script>
+
+
+  若使用async:
+  async function getMessage() {
+    try {
+      const res = await fetch('/api/message');
+      const data = await res.json();
+      document.getElementById('getResult').textContent = data.message;
+    } catch (err) {
+      console.error('GET 發生錯誤：', err);
+    }
+  }
+
+  async function sendMessage() {
+    const msg = document.getElementById('userInput').value;
+
+    try {
+      const res = await fetch('/api/message', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: msg })
+      });
+
+      const data = await res.json();
+      document.getElementById('postResult').textContent = data.reply;
+
+    } catch (err) {
+      console.error('POST 發生錯誤：', err);
+    }
+  }
+
+
+server.js--
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json()); // 處理 JSON 請求
+app.use(express.static('public')); // 讓前端可以存取 public 資料夾
+
+// GET 路由
+app.get('/api/message', (req, res) => {
+  res.json({ message: 'Hello from backend!' });
+});
+
+// POST 路由
+app.post('/api/message', (req, res) => {
+  const userMessage = req.body.message;
+  console.log('收到訊息:', userMessage);
+  res.json({ reply: `你說的是：${userMessage}` });
+});
+
+// 啟動伺服器
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
+
+
+
