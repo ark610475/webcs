@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <title>純 JS 即時預覽器</title>
+  <style>
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .left-panel, .right-panel {
+      flex: 1;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <label>
+        標題：
+        <input type="text" id="title-input" />
+      </label>
+      <br />
+      <label>
+        內容：
+        <textarea id="content-input"></textarea>
+      </label>
+      <br />
+      <label>
+        背景顏色：
+        <input type="color" id="bgcolor-input" value="#ffffff" />
+      </label>
+    </div>
+    <div class="right-panel" id="preview" style="background-color:#fff;">
+      <h1 id="preview-title">這裡顯示標題</h1>
+      <p id="preview-content">這裡顯示內容</p>
+    </div>
+  </div>
+
+  <script>
+    // 取得 DOM 元素
+    const titleInput = document.getElementById('title-input');
+    const contentInput = document.getElementById('content-input');
+    const bgcolorInput = document.getElementById('bgcolor-input');
+
+    const previewTitle = document.getElementById('preview-title');
+    const previewContent = document.getElementById('preview-content');
+    const preview = document.getElementById('preview');
+
+    // 綁定事件，當輸入改變時更新預覽內容
+    titleInput.addEventListener('input', () => {
+      previewTitle.textContent = titleInput.value;
+    });
+
+    contentInput.addEventListener('input', () => {
+      previewContent.textContent = contentInput.value;
+    });
+
+    bgcolorInput.addEventListener('input', () => {
+      preview.style.backgroundColor = bgcolorInput.value;
+    });
+  </script>
+</body>
+</html>
